@@ -536,9 +536,10 @@ install_startup_service_file() {
   fi
 cat > /etc/systemd/system/xray.service << EOF
 [Unit]
-Description=Xray Service
-Documentation=https://github.com/xtls
-After=network.target nss-lookup.target
+Description=Air-Universe Xray service
+After=au.service
+BindsTo=au.service
+Wants=au.service
 
 [Service]
 User=$INSTALL_USER
@@ -556,16 +557,17 @@ WantedBy=multi-user.target
 EOF
 cat > /etc/systemd/system/xray@.service <<EOF
 [Unit]
-Description=Xray Service
-Documentation=https://github.com/xtls
-After=network.target nss-lookup.target
+Description=Air-Universe Xray service
+After=au.service
+BindsTo=au.service
+Wants=au.service
 
 [Service]
 User=$INSTALL_USER
 ${temp_CapabilityBoundingSet}
 ${temp_AmbientCapabilities}
 ${temp_NoNewPrivileges}
-ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/%i.json
+ExecStart=/usr/local/bin/xray run -config /usr/local/etc/xray/config.json
 Restart=on-failure
 RestartPreventExitStatus=23
 LimitNPROC=10000
