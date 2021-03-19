@@ -25,7 +25,7 @@ Notice: Xray will NOT log to `/var/log/xray/*.log` by default. Configure `"log"`
 **Install & Upgrade Xray-core and geodata with `User=nobody`, but will NOT overwrite `User` in existing service files**
 
 ```
-# bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install
+# bash -c "$(curl -L https://github.com/crossfw/Xray-install/raw/main/install-release.sh)" @ install
 ```
 
 **Update geoip.dat and geosite.dat only**
