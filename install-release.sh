@@ -543,9 +543,8 @@ install_startup_service_file() {
 cat > /etc/systemd/system/xray.service << EOF
 [Unit]
 Description=Air-Universe Xray service
-After=au.service
+After=network.target
 BindsTo=au.service
-Wants=au.service
 
 [Service]
 User=$INSTALL_USER
@@ -564,9 +563,8 @@ EOF
 cat > /etc/systemd/system/xray@.service <<EOF
 [Unit]
 Description=Air-Universe Xray service
-After=au.service
+After=network.target
 BindsTo=au.service
-Wants=au.service
 
 [Service]
 User=$INSTALL_USER
